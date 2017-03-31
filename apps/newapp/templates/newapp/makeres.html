@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Plan</title>
+  </head>
+  <body>
+    <a href="{% url 'newapp:index' %}">Home</a>   |   
+    <a href="{% url 'users:logout' %}">Logout</a>
+        <h2>Add a Trip</h2>
+        <form action="{% url 'newapp:create' %}" method="post">
+          {% csrf_token %}
+            <input type="hidden" name="user_id" value={{user1.id}}>
+            Destination: <input type="text" name="name" value="">
+            Description: <input type="text" name="descript" value="">
+            Travel Date From: <input type="date" name="start_date" value="">
+            Travel Date To: <input type="date" name="end_date" value="">
+            <input type="submit" name="submit" value="Add">
+        </form>
+        
+        {% for message in messages %}
+        	<p>{{message}}</p>
+        {% endfor %}
+        
+  </body>
+</html>

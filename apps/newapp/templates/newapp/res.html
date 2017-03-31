@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Destination</title>
+    </head>
+    <body>
+        <a href="{% url 'newapp:index' %}">Home</a>   |   
+        <a href="{% url 'users:logout' %}">Logout</a>
+        <h2>{{travel.name}}</h2>
+        <p>Planned By: {{travel.user.name}}</p>
+        <p>Description: {{travel.descript}}</p>
+        <p>Travel Date From: {{travel.start_date}}</p>
+        <p>Travel Date To: {{travel.end_date}}</p>
+        <hr>
+        <hr>
+    
+        <h2>Other users joining the trip:</h2>
+        {% for i in added %}
+            {% if not i.id == request.session.user_id %}
+                 <p>{{i.name}}</p>
+            {% endif %}
+        {% endfor %}
+    </body>
+</html>

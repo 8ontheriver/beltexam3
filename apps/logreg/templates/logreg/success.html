@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Success</title>
+	</head>
+	<body>
+		<div id="main">
+			<h2>Success Page!</h2>
+			Welcome: {{ request.session.first_name }}
+			<form class="" action="{% url 'users:logout' %}" method="post">
+				{% csrf_token %}
+				<input type="submit" name="submit" value="Logout">
+			</form>
+		</div>
+	</body>
+</html>
